@@ -97,6 +97,7 @@ function Profile() {
 
 
                             }
+                            
                         </label>
                         <FloatingLabel controlId="username" label="UserName" className="mb-2" >
                             <Form.Control type="text" value={user.username} onChange={(e) => setuser({ ...user, username: e.target.value })} placeholder="User name" />

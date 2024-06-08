@@ -10,18 +10,18 @@ import { addProjectsResponseContext, editprojectResponceContext } from '../conte
 import { toast } from 'react-toastify'
 
 function Dashboard() {
-  const {addProjectResponce,setaddProjectResponce}=useContext(addProjectsResponseContext)
-  const {editprojectResponce,setEditprojectResponce}=useContext(editprojectResponceContext)
+  const { addProjectResponce, setaddProjectResponce } = useContext(addProjectsResponseContext)
+  const { editprojectResponce, setEditprojectResponce } = useContext(editprojectResponceContext)
   const [project, setproject] = useState([])
-  const [user,setuser]=useState('')
+  const [user, setuser] = useState('')
 
   useEffect(() => {
     setuser(sessionStorage.getItem('username'))
     getdata()
 
-  }, [addProjectResponce,editprojectResponce])
+  }, [addProjectResponce, editprojectResponce])
 
-  
+
 
   const getdata = async () => {
     const header = { "Authorization": `Bearer ${sessionStorage.getItem('token')}` }
@@ -38,24 +38,24 @@ function Dashboard() {
   }
   console.log(project);
 
-  const handledelt=async(id)=>{
-    const token=sessionStorage.getItem('token')
+  const handledelt = async (id) => {
+    const token = sessionStorage.getItem('token')
     console.log();
     const header = {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
 
 
-  }
-  const result=await deleteproject(id,header)
-  if(result.status==200){
-    toast.success("project Delete Success")
-    getdata()
-  }
-  else{
-    console.log(result);
-    toast.error(result.response.data)
-  }
+    }
+    const result = await deleteproject(id, header)
+    if (result.status == 200) {
+      toast.success("project Delete Success")
+      getdata()
+    }
+    else {
+      console.log(result);
+      toast.error(result.response.data)
+    }
 
   }
 
@@ -84,9 +84,9 @@ function Dashboard() {
                           <i className='fa-brands fa-github fa-2xl '></i>
 
                         </a>
-                        <Edit project={iteem}/>
+                        <Edit project={iteem} />
 
-                        <button className="btn me-3" onClick={()=>{handledelt(iteem._id)}}>
+                        <button className="btn me-3" onClick={() => { handledelt(iteem._id) }}>
                           <i className='fa-solid fa-trash fa-2xl'></i>
                         </button>
 

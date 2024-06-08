@@ -22,6 +22,7 @@ function Header({status}) {
           <i className="fa-solid fa-diagram-project fa-xl me-2"></i>
            {' '}
             Project Fair
+            
           </Navbar.Brand>
           {
             !status &&
